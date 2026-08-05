@@ -1,29 +1,28 @@
-# XFreeze Grok Lab
+# Xfreeze Portfolio
 
-Static v1 website for the `@XFreeze` Grok creator profile.
+Personal portfolio for [@XFreeze](https://x.com/XFreeze) — engineer, writer, and researcher.
 
-## Open The Site
+## Sections
 
-Open `index.html` in a browser.
+- Hero + profile stats
+- About
+- Freezestack (templates, skills, prompts)
+- Articles (X long-form with scroll-linked horizontal track)
+- Post library
+- Contact (Calendly consult + email)
+- Support (Buy me a coffee / crypto)
 
-## Update Contact And Checkout Links
+## Local
 
-Edit the `siteConfig` block at the top of `app.js`:
-
-```js
-const siteConfig = {
-  contactEmail: "hello@xfreeze.ai",
-  profileUrl: "https://x.com/XFreeze",
-  products: {
-    starter: "https://xfreeze.gumroad.com/l/creator-starter-pack",
-    commercial: "https://xfreeze.gumroad.com/l/commercial-prompt-pack",
-    vault: "https://xfreeze.gumroad.com/l/xfreeze-complete-vault"
-  }
-};
+```bash
+cd Xfreeze-Portfolio
+python3 -m http.server 5299
 ```
 
-Replace the email and product URLs with your real Lemon Squeezy or Gumroad links.
+Open [http://localhost:5299](http://localhost:5299).
 
-## Update Before / After Results
+## Contact
 
-Edit the `comparisons` array in `app.js` to add real before-and-after image pairs for each template.
+- Consult: [Calendly](https://calendly.com/xfreeze-connect/30min)
+- Email: xfreeze.connect@gmail.com
+- X: [@XFreeze](https://x.com/XFreeze)
