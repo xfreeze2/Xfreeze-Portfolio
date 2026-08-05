@@ -39,32 +39,34 @@
 }
 
 html[data-theme="dark"] {
-  --canvas: #0b1018;
-  --canvas-soft: #111822;
-  --canvas-bright: #151d2a;
-  --ink: #eef2f7;
-  --ink-soft: #f4f7fb;
-  --slate: #a8b4c7;
-  --muted: #8b95a8;
-  --line: rgba(168, 180, 199, 0.16);
-  --line-strong: rgba(168, 180, 199, 0.36);
-  --header-bg: rgba(11, 16, 24, 0.88);
-  --card-bg: #151d2a;
-  --card-bg-soft: rgba(21, 29, 42, 0.86);
-  --panel-bg: linear-gradient(118deg, rgba(22, 30, 44, 0.98), rgba(14, 20, 30, 0.98));
-  --panel-sheen: radial-gradient(circle at 12% 8%, rgba(80, 110, 160, 0.14), transparent 34%);
-  --section-tint: #0e1520;
-  --noise-opacity: 0.04;
+  /* Palette: #0B192C · #222831 · #1E3E62 */
+  --canvas: #0b192c;
+  --canvas-soft: #142338;
+  --canvas-bright: #222831;
+  --ink: #e8eef6;
+  --ink-soft: #f2f6fb;
+  --slate: #8fa8c4;
+  --muted: #7a8fa8;
+  --line: rgba(30, 62, 98, 0.45);
+  --line-strong: rgba(30, 62, 98, 0.75);
+  --header-bg: rgba(11, 25, 44, 0.9);
+  --card-bg: #222831;
+  --card-bg-soft: rgba(34, 40, 49, 0.9);
+  --panel-bg: linear-gradient(118deg, rgba(34, 40, 49, 0.98), rgba(20, 35, 56, 0.98));
+  --panel-sheen: radial-gradient(circle at 12% 8%, rgba(30, 62, 98, 0.45), transparent 38%);
+  --section-tint: #0f1f35;
+  --noise-opacity: 0.045;
   --noise-blend: soft-light;
-  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
-  --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.4);
-  --thumb-bg: #05080e;
+  --shadow-soft: 0 18px 40px rgba(5, 12, 22, 0.45);
+  --shadow-panel: 0 24px 64px rgba(5, 12, 22, 0.5);
+  --thumb-bg: #08111f;
   --portrait-glow: radial-gradient(
     circle at 50% 52%,
-    rgba(80, 120, 180, 0.12),
-    rgba(11, 16, 24, 0.55) 55%,
+    rgba(30, 62, 98, 0.35),
+    rgba(11, 25, 44, 0.7) 55%,
     transparent 72%
   );
+  --accent: #1e3e62;
 }
 
 * {
@@ -442,8 +444,7 @@ main {
   width: 104%;
   height: 91%;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 50% 52%, rgba(55, 70, 95, 0.12), rgba(237, 241, 244, 0.22) 55%, transparent 71%);
+  background: var(--portrait-glow);
   content: "";
 }
 
