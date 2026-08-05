@@ -39,34 +39,56 @@
 }
 
 html[data-theme="dark"] {
-  /* Palette: #0B192C · #222831 · #1E3E62 */
-  --canvas: #0b192c;
-  --canvas-soft: #142338;
-  --canvas-bright: #222831;
-  --ink: #e8eef6;
-  --ink-soft: #f2f6fb;
-  --slate: #8fa8c4;
-  --muted: #7a8fa8;
-  --line: rgba(30, 62, 98, 0.45);
-  --line-strong: rgba(30, 62, 98, 0.75);
-  --header-bg: rgba(11, 25, 44, 0.9);
+  /* Dark grey base · #222831 cards · #1E3E62 accent only */
+  --canvas: #1a1d22;
+  --canvas-soft: #222831;
+  --canvas-bright: #2a2f38;
+  --ink: #eceff3;
+  --ink-soft: #f5f7fa;
+  --slate: #a0a8b4;
+  --muted: #8a919c;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(255, 255, 255, 0.2);
+  --header-bg: rgba(26, 29, 34, 0.92);
   --card-bg: #222831;
-  --card-bg-soft: rgba(34, 40, 49, 0.9);
-  --panel-bg: linear-gradient(118deg, rgba(34, 40, 49, 0.98), rgba(20, 35, 56, 0.98));
-  --panel-sheen: radial-gradient(circle at 12% 8%, rgba(30, 62, 98, 0.45), transparent 38%);
-  --section-tint: #0f1f35;
-  --noise-opacity: 0.045;
+  --card-bg-soft: rgba(34, 40, 49, 0.92);
+  --panel-bg: linear-gradient(118deg, #2a2f38, #222831);
+  --panel-sheen: radial-gradient(circle at 12% 8%, rgba(30, 62, 98, 0.28), transparent 40%);
+  --section-tint: #1a1d22;
+  --noise-opacity: 0.05;
   --noise-blend: soft-light;
-  --shadow-soft: 0 18px 40px rgba(5, 12, 22, 0.45);
-  --shadow-panel: 0 24px 64px rgba(5, 12, 22, 0.5);
-  --thumb-bg: #08111f;
-  --portrait-glow: radial-gradient(
-    circle at 50% 52%,
-    rgba(30, 62, 98, 0.35),
-    rgba(11, 25, 44, 0.7) 55%,
-    transparent 72%
-  );
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
+  --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.45);
+  --thumb-bg: #12151a;
+  /* No light halo — transparent so page grey shows through cleanly */
+  --portrait-glow: transparent;
   --accent: #1e3e62;
+}
+
+/* Kill light portrait halo + any baked edge glow in dark mode */
+html[data-theme="dark"] .portrait-stage::before {
+  display: none;
+}
+
+html[data-theme="dark"] .portrait-stage {
+  background: transparent;
+}
+
+html[data-theme="dark"] .portrait-stage img {
+  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.45));
+}
+
+html[data-theme="dark"] .hero-sticky {
+  background: var(--canvas);
+}
+
+html[data-theme="dark"] .hero-name {
+  color: rgba(255, 255, 255, 0.04);
+}
+
+html[data-theme="dark"] .orbit-lines,
+html[data-theme="dark"] .orbit-lines span {
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 * {
