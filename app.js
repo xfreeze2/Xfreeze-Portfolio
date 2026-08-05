@@ -189,6 +189,36 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
 }
 
+const CALENDLY_URL = "https://calendly.com/xfreeze-connect/30min";
+
+function openCalendlyPopup() {
+  if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+    window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+    return;
+  }
+  // Widget script still loading — wait briefly, then fall back to new tab
+  let tries = 0;
+  const wait = window.setInterval(() => {
+    tries += 1;
+    if (window.Calendly && typeof window.Calendly.initPopupWidget === "function") {
+      window.clearInterval(wait);
+      window.Calendly.initPopupWidget({ url: CALENDLY_URL });
+      return;
+    }
+    if (tries >= 20) {
+      window.clearInterval(wait);
+      window.open(CALENDLY_URL, "_blank", "noopener,noreferrer");
+    }
+  }, 100);
+}
+
+document.querySelectorAll("[data-open-calendly]").forEach((button) => {
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    openCalendlyPopup();
+  });
+});
+
 document.querySelectorAll("[data-open-support]").forEach((button) => {
   button.addEventListener("click", () => openDialog(supportDialog));
 });
