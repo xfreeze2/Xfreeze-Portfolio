@@ -1,3 +1,49 @@
+/* Theme: light / dark with localStorage + system preference */
+(function initThemeToggle() {
+  const key = "xf-theme";
+  const root = document.documentElement;
+
+  function getPreferred() {
+    try {
+      const stored = localStorage.getItem(key);
+      if (stored === "dark" || stored === "light") return stored;
+    } catch (_) {}
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem(key, theme);
+    } catch (_) {}
+    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      const next = theme === "dark" ? "light" : "dark";
+      btn.setAttribute("aria-label", `Switch to ${next} theme`);
+      btn.title = `Switch to ${next} theme`;
+    });
+  }
+
+  applyTheme(root.getAttribute("data-theme") || getPreferred());
+
+  document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+  });
+
+  // Follow system only when user hasn't chosen explicitly
+  try {
+    if (!localStorage.getItem(key)) {
+      window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (event) => {
+        if (!localStorage.getItem(key)) {
+          applyTheme(event.matches ? "dark" : "light");
+        }
+      });
+    }
+  } catch (_) {}
+})();
+
 /* Path-based section routes: /frezestack not #frezestack */
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
