@@ -19,6 +19,12 @@
   --shadow-soft: 0 18px 40px rgba(55, 70, 95, 0.1);
   --shadow-panel: 0 24px 64px rgba(55, 70, 95, 0.16);
   --thumb-bg: #0b1220;
+  --portrait-glow: radial-gradient(
+    circle at 50% 52%,
+    rgba(55, 70, 95, 0.12),
+    rgba(237, 241, 244, 0.22) 55%,
+    transparent 71%
+  );
   --gutter: clamp(28px, 7.5vw, 144px);
   --section-space: clamp(108px, 13vw, 208px);
   --radius: 0;
@@ -53,6 +59,12 @@ html[data-theme="dark"] {
   --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.35);
   --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.4);
   --thumb-bg: #05080e;
+  --portrait-glow: radial-gradient(
+    circle at 50% 52%,
+    rgba(80, 120, 180, 0.12),
+    rgba(11, 16, 24, 0.55) 55%,
+    transparent 72%
+  );
 }
 
 * {
