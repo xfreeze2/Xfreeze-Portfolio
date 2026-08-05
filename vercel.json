@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/about", "destination": "/index.html" },
+    { "source": "/frezestack", "destination": "/index.html" },
+    { "source": "/articles", "destination": "/index.html" },
+    { "source": "/posts", "destination": "/index.html" },
+    { "source": "/library", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/support", "destination": "/index.html" }
+  ]
+}

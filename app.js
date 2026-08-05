@@ -1,7 +1,109 @@
-/* Keep scroll position on refresh (browser default) */
+/* Path-based section routes: /frezestack not #frezestack */
 if ("scrollRestoration" in history) {
-  history.scrollRestoration = "auto";
+  history.scrollRestoration = "manual";
 }
+
+(function initPathRouting() {
+  const pathToSection = {
+    "/": "top",
+    "/about": "about",
+    "/frezestack": "frezestack",
+    "/articles": "articles",
+    "/posts": "posts",
+    "/library": "posts",
+    "/contact": "contact",
+    "/support": "support"
+  };
+
+  function normalizePath(pathname) {
+    const p = (pathname || "/").replace(/\/+$/, "");
+    return p === "" ? "/" : p;
+  }
+
+  function sectionIdFromPath(pathname) {
+    return pathToSection[normalizePath(pathname)] || null;
+  }
+
+  function pathFromSectionId(id) {
+    if (!id || id === "top") return "/";
+    const match = Object.entries(pathToSection).find(
+      ([path, sectionId]) => sectionId === id && path !== "/library"
+    );
+    return match ? match[0] : `/${id}`;
+  }
+
+  function scrollToSection(id, behavior = "smooth") {
+    if (!id || id === "top") {
+      window.scrollTo({ top: 0, behavior });
+      return;
+    }
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior, block: "start" });
+  }
+
+  function go(path, { push = true, behavior = "smooth" } = {}) {
+    const clean = normalizePath(path);
+    const id = sectionIdFromPath(clean) || "top";
+    const url = clean === "/" ? "/" : clean;
+    if (push) history.pushState({ path: clean }, "", url);
+    else history.replaceState({ path: clean }, "", url);
+    scrollToSection(id, behavior);
+  }
+
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link || link.target === "_blank" || link.hasAttribute("download")) return;
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    // Clean path links: /about, /frezestack, …
+    if (href.startsWith("/") && !href.startsWith("//")) {
+      const pathOnly = href.split("?")[0].split("#")[0];
+      if (sectionIdFromPath(pathOnly) || pathOnly === "/") {
+        event.preventDefault();
+        go(pathOnly);
+      }
+      return;
+    }
+
+    // Legacy hash links still work, but rewrite URL without #
+    if (href.startsWith("#") && href.length > 1) {
+      const id = href.slice(1);
+      if (id === "main") return;
+      if (id === "top" || document.getElementById(id)) {
+        event.preventDefault();
+        go(pathFromSectionId(id));
+      }
+    }
+  });
+
+  window.addEventListener("popstate", () => {
+    go(location.pathname, { push: false, behavior: "auto" });
+  });
+
+  function bootFromLocation() {
+    // Old bookmarks: /#frezestack → /frezestack
+    if (location.hash && location.hash.length > 1) {
+      const id = location.hash.slice(1);
+      if (id === "top" || document.getElementById(id)) {
+        go(pathFromSectionId(id), { push: false, behavior: "auto" });
+        return;
+      }
+    }
+    const path = normalizePath(location.pathname);
+    if (path !== "/" && sectionIdFromPath(path)) {
+      go(path, { push: false, behavior: "auto" });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootFromLocation);
+  } else {
+    bootFromLocation();
+  }
+})();
 
 const consultDialog = document.querySelector("#consultDialog");
 const supportDialog = document.querySelector("#supportDialog");
