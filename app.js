@@ -44,7 +44,7 @@
   } catch (_) {}
 })();
 
-/* Path-based section routes: /frezestack not #frezestack */
+/* Path-based section routes + keep scroll position on refresh */
 if ("scrollRestoration" in history) {
   history.scrollRestoration = "manual";
 }
@@ -60,6 +60,9 @@ if ("scrollRestoration" in history) {
     "/contact": "contact",
     "/support": "support"
   };
+  const SCROLL_Y_KEY = "xf-scroll-y";
+  const SCROLL_PATH_KEY = "xf-scroll-path";
+  let saveTimer = 0;
 
   function normalizePath(pathname) {
     const p = (pathname || "/").replace(/\/+$/, "");
@@ -78,6 +81,34 @@ if ("scrollRestoration" in history) {
     return match ? match[0] : `/${id}`;
   }
 
+  function saveScroll() {
+    try {
+      sessionStorage.setItem(SCROLL_Y_KEY, String(window.scrollY || 0));
+      sessionStorage.setItem(SCROLL_PATH_KEY, normalizePath(location.pathname));
+    } catch (_) {}
+  }
+
+  function readSavedScroll() {
+    try {
+      const path = sessionStorage.getItem(SCROLL_PATH_KEY);
+      const y = sessionStorage.getItem(SCROLL_Y_KEY);
+      if (path == null || y == null) return null;
+      return { path, y: Math.max(0, parseInt(y, 10) || 0) };
+    } catch (_) {
+      return null;
+    }
+  }
+
+  function restoreScroll(y) {
+    const apply = () => window.scrollTo({ top: y, left: 0, behavior: "auto" });
+    apply();
+    // Layout (images/sticky) can shift after first paint — re-apply a few times
+    window.requestAnimationFrame(apply);
+    window.setTimeout(apply, 50);
+    window.setTimeout(apply, 200);
+    window.setTimeout(apply, 500);
+  }
+
   function scrollToSection(id, behavior = "smooth") {
     if (!id || id === "top") {
       window.scrollTo({ top: 0, behavior });
@@ -94,7 +125,22 @@ if ("scrollRestoration" in history) {
     if (push) history.pushState({ path: clean }, "", url);
     else history.replaceState({ path: clean }, "", url);
     scrollToSection(id, behavior);
+    // Nav clicks intentionally jump — overwrite saved position after jump
+    window.setTimeout(saveScroll, behavior === "smooth" ? 450 : 0);
   }
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      window.clearTimeout(saveTimer);
+      saveTimer = window.setTimeout(saveScroll, 80);
+    },
+    { passive: true }
+  );
+  window.addEventListener("pagehide", saveScroll);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") saveScroll();
+  });
 
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a[href]");
@@ -104,7 +150,6 @@ if ("scrollRestoration" in history) {
     const href = link.getAttribute("href");
     if (!href) return;
 
-    // Clean path links: /about, /frezestack, …
     if (href.startsWith("/") && !href.startsWith("//")) {
       const pathOnly = href.split("?")[0].split("#")[0];
       if (sectionIdFromPath(pathOnly) || pathOnly === "/") {
@@ -114,7 +159,6 @@ if ("scrollRestoration" in history) {
       return;
     }
 
-    // Legacy hash links still work, but rewrite URL without #
     if (href.startsWith("#") && href.length > 1) {
       const id = href.slice(1);
       if (id === "main") return;
@@ -129,18 +173,34 @@ if ("scrollRestoration" in history) {
     go(location.pathname, { push: false, behavior: "auto" });
   });
 
+  function isReload() {
+    const nav = performance.getEntriesByType("navigation")[0];
+    return Boolean(nav && nav.type === "reload");
+  }
+
   function bootFromLocation() {
-    // Old bookmarks: /#frezestack → /frezestack
+    // Old bookmarks: /#frezestack → /frezestack (URL only)
     if (location.hash && location.hash.length > 1) {
       const id = location.hash.slice(1);
       if (id === "top" || document.getElementById(id)) {
-        go(pathFromSectionId(id), { push: false, behavior: "auto" });
-        return;
+        const path = pathFromSectionId(id);
+        history.replaceState({ path }, "", path === "/" ? "/" : path);
       }
     }
+
     const path = normalizePath(location.pathname);
-    if (path !== "/" && sectionIdFromPath(path)) {
-      go(path, { push: false, behavior: "auto" });
+    const saved = readSavedScroll();
+
+    // Refresh / back within same session: restore exact scroll position
+    if (saved && saved.path === path) {
+      restoreScroll(saved.y);
+      return;
+    }
+
+    // Fresh visit to a section path (not a reload with saved scroll)
+    if (!isReload() && path !== "/" && sectionIdFromPath(path)) {
+      scrollToSection(sectionIdFromPath(path), "auto");
+      window.setTimeout(saveScroll, 0);
     }
   }
 
