@@ -7,5 +7,23 @@
     { "source": "/library", "destination": "/index.html" },
     { "source": "/contact", "destination": "/index.html" },
     { "source": "/support", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/favicon.ico",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/favicon-(.*).png",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/apple-touch-icon.png",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    },
+    {
+      "source": "/(index.html|app.js|styles.css|posts.js)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, must-revalidate" }]
+    }
   ]
 }
