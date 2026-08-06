@@ -39,27 +39,27 @@
 }
 
 html[data-theme="dark"] {
-  /* Dark grey base · #222831 cards · #1E3E62 accent only */
-  --canvas: #1a1d22;
-  --canvas-soft: #222831;
-  --canvas-bright: #2a2f38;
+  /* Dark grey base (slightly deeper) · #1E3E62 accent only */
+  --canvas: #12151a;
+  --canvas-soft: #1a1e24;
+  --canvas-bright: #222831;
   --ink: #eceff3;
   --ink-soft: #f5f7fa;
   --slate: #a0a8b4;
   --muted: #8a919c;
   --line: rgba(255, 255, 255, 0.1);
   --line-strong: rgba(255, 255, 255, 0.2);
-  --header-bg: rgba(26, 29, 34, 0.92);
-  --card-bg: #222831;
-  --card-bg-soft: rgba(34, 40, 49, 0.92);
-  --panel-bg: linear-gradient(118deg, #2a2f38, #222831);
-  --panel-sheen: radial-gradient(circle at 12% 8%, rgba(30, 62, 98, 0.28), transparent 40%);
-  --section-tint: #1a1d22;
+  --header-bg: rgba(18, 21, 26, 0.92);
+  --card-bg: #1a1e24;
+  --card-bg-soft: rgba(26, 30, 36, 0.94);
+  --panel-bg: linear-gradient(118deg, #222831, #1a1e24);
+  --panel-sheen: radial-gradient(circle at 12% 8%, rgba(30, 62, 98, 0.24), transparent 40%);
+  --section-tint: #12151a;
   --noise-opacity: 0.05;
   --noise-blend: soft-light;
-  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
-  --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.45);
-  --thumb-bg: #12151a;
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --shadow-panel: 0 24px 64px rgba(0, 0, 0, 0.5);
+  --thumb-bg: #0c0e12;
   /* No light halo — transparent so page grey shows through cleanly */
   --portrait-glow: transparent;
   --accent: #1e3e62;
