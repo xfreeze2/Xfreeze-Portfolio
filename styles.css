@@ -2985,21 +2985,24 @@ body.calendly-loading-open {
 
   .portrait-stage {
     position: absolute;
-    right: -7%;
-    bottom: 0;
-    width: 59%;
-    min-height: 360px;
-    height: 48%;
+    z-index: 4;
+    right: -4%;
+    /* Keep face above the stats panel overlap */
+    bottom: max(120px, 22%);
+    width: 58%;
+    min-height: 300px;
+    height: 46%;
   }
 
   .portrait-stage img {
     width: 110%;
     height: 100%;
+    object-position: center 10%;
   }
 
   .hero-name {
     right: -5%;
-    bottom: 2%;
+    bottom: 18%;
     font-size: 22vw;
   }
 
@@ -3059,10 +3062,12 @@ body.calendly-loading-open {
   }
 
   .profile-stats-panel {
+    /* Soft peek only — avoid covering the hero portrait face on mobile */
     min-height: 0;
-    padding: 48px;
+    padding: 40px 28px 44px;
     grid-template-columns: 1fr;
-    gap: 52px;
+    gap: 40px;
+    transform: translateY(-18px);
   }
 
   .profile-stats-heading h2 {
@@ -3231,10 +3236,20 @@ body.calendly-loading-open {
   }
 
   .portrait-stage {
-    right: -25%;
-    width: 88%;
-    min-height: 330px;
-    height: 42%;
+    right: -10%;
+    bottom: max(140px, 26%);
+    width: 72%;
+    min-height: 280px;
+    height: 44%;
+  }
+
+  .portrait-stage img {
+    object-position: center 8%;
+  }
+
+  .profile-stats-panel {
+    transform: translateY(-12px);
+    padding: 32px 22px 36px;
   }
 
   .hero-name {
