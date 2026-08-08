@@ -2942,73 +2942,90 @@ body.calendly-loading-open {
   }
 
   .hero {
-    height: 108dvh;
-    min-height: 780px;
+    /* Content-sized hero — no huge empty band under CTAs */
+    height: auto;
+    min-height: 0;
   }
 
   .hero-sticky {
     position: relative;
     top: 0;
     display: block;
-    height: calc(100dvh - 62px);
-    min-height: 680px;
-    padding: clamp(44px, 6.5vh, 62px) var(--gutter) 0;
+    height: auto;
+    min-height: min(88dvh, 640px);
+    padding: clamp(36px, 5vh, 52px) var(--gutter) 0;
+    overflow: hidden;
   }
 
   .hero-copy {
-    max-width: 660px;
-    padding-bottom: 0;
+    position: relative;
+    z-index: 5;
+    max-width: min(58%, 420px);
+    padding-bottom: 28px;
   }
 
   .hero h1 {
-    max-width: 640px;
-    font-size: clamp(3rem, 8.4vw, 4rem);
-    line-height: 1;
+    max-width: 100%;
+    font-size: clamp(2.85rem, 8vw, 3.75rem);
+    line-height: 1.02;
   }
 
   .hero-summary {
-    max-width: 42ch;
-    margin-top: 24px;
+    max-width: 28ch;
+    margin-top: 20px;
     font-size: 13px;
     line-height: 1.62;
   }
 
   .hero-actions {
-    gap: 24px;
-    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px 16px;
+    margin-top: 24px;
+    max-width: 100%;
   }
 
   .hero-actions .button {
     min-height: 48px;
-    padding-inline: 20px;
+    padding-inline: 18px;
+    flex: 0 0 auto;
+  }
+
+  .hero-actions .text-link {
+    min-height: 40px;
+    font-size: 12.5px;
+    white-space: nowrap;
   }
 
   .portrait-stage {
     position: absolute;
-    z-index: 4;
-    right: -4%;
-    /* Keep face above the stats panel overlap */
-    bottom: max(120px, 22%);
-    width: 58%;
-    min-height: 300px;
-    height: 46%;
+    z-index: 3;
+    right: -6%;
+    bottom: 0;
+    width: min(54vw, 300px);
+    height: 62%;
+    min-height: 340px;
+    max-height: 440px;
   }
 
   .portrait-stage img {
-    width: 110%;
+    width: 100%;
     height: 100%;
-    object-position: center 10%;
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .hero-name {
     right: -5%;
-    bottom: 18%;
-    font-size: 22vw;
+    bottom: 2%;
+    font-size: 20vw;
   }
 
   .principle {
-    min-height: 650px;
-    padding-top: 430px;
+    min-height: 0;
+    /* stats panel has real height on mobile again */
+    padding-top: var(--section-space);
   }
 
   .principle::after {
@@ -3054,20 +3071,24 @@ body.calendly-loading-open {
   }
 
   .profile-stats {
-    --stats-seam-offset: 48px;
-    height: 0;
-    margin: 0;
+    /* Real height in flow — slight pull-up, no dead hero gap */
+    --stats-seam-offset: 0;
+    position: relative;
+    z-index: 6;
+    height: auto;
+    margin: -36px 0 0;
     padding: 0 var(--gutter);
-    scroll-margin-top: 300px;
+    scroll-margin-top: 100px;
+    pointer-events: none;
   }
 
   .profile-stats-panel {
-    /* Soft peek only — avoid covering the hero portrait face on mobile */
     min-height: 0;
-    padding: 40px 28px 44px;
+    padding: 36px 26px 40px;
     grid-template-columns: 1fr;
-    gap: 40px;
-    transform: translateY(-18px);
+    gap: 36px;
+    transform: none;
+    pointer-events: auto;
   }
 
   .profile-stats-heading h2 {
@@ -3196,32 +3217,37 @@ body.calendly-loading-open {
 
 @media (max-width: 480px) {
   .hero {
-    height: 110dvh;
-    min-height: 780px;
+    height: auto;
+    min-height: 0;
   }
 
   .hero-sticky {
-    min-height: 700px;
-    padding-top: 42px;
+    min-height: min(86dvh, 620px);
+    padding-top: 36px;
+  }
+
+  .hero-copy {
+    max-width: min(60%, 240px);
+    padding-bottom: 20px;
   }
 
   .hero h1 {
     max-width: 100%;
-    font-size: clamp(2.65rem, 12vw, 3.05rem);
-    line-height: 1.01;
+    font-size: clamp(2.45rem, 11vw, 2.85rem);
+    line-height: 1.02;
   }
 
   .hero-summary {
-    max-width: 31ch;
-    margin-top: 22px;
+    max-width: 22ch;
+    margin-top: 18px;
     font-size: 12.5px;
   }
 
   .hero-actions {
-    align-items: center;
-    flex-direction: row;
-    gap: 16px;
-    margin-top: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
   }
 
   .hero-actions .button {
@@ -3231,31 +3257,42 @@ body.calendly-loading-open {
   }
 
   .hero-actions .text-link {
-    min-height: 38px;
-    font-size: 12px;
+    min-height: 36px;
+    font-size: 12.5px;
+    white-space: nowrap;
   }
 
   .portrait-stage {
-    right: -10%;
-    bottom: max(140px, 26%);
-    width: 72%;
-    min-height: 280px;
-    height: 44%;
+    right: -12%;
+    bottom: 0;
+    width: min(68vw, 260px);
+    min-height: 300px;
+    height: 58%;
+    max-height: 380px;
   }
 
   .portrait-stage img {
-    object-position: center 8%;
+    object-position: center bottom;
+  }
+
+  .profile-stats {
+    height: auto;
+    margin-top: -28px;
+    padding: 0 16px;
+    scroll-margin-top: 100px;
   }
 
   .profile-stats-panel {
-    transform: translateY(-12px);
-    padding: 32px 22px 36px;
+    transform: none;
+    padding: 28px 20px 32px;
+    border-radius: 14px;
+    gap: 32px;
   }
 
   .hero-name {
-    right: -12%;
-    bottom: 22%;
-    font-size: 30vw;
+    right: -10%;
+    bottom: 1%;
+    font-size: 26vw;
   }
 
   .principle h2 {
@@ -3263,26 +3300,13 @@ body.calendly-loading-open {
   }
 
   .principle {
-    padding-top: 440px;
+    padding-top: var(--section-space);
   }
 
   .principle-actions {
     align-items: flex-start;
     flex-direction: column;
     gap: 18px;
-  }
-
-  .profile-stats {
-    height: 0;
-    margin: 0;
-    padding: 0 16px;
-    scroll-margin-top: 360px;
-  }
-
-  .profile-stats-panel {
-    padding: 34px 26px 38px;
-    border-radius: 14px;
-    gap: 42px;
   }
 
   .profile-stats-heading h2 {
