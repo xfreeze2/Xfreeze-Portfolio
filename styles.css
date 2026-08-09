@@ -298,18 +298,19 @@ main {
 .hero {
   position: relative;
   isolation: isolate;
-  /* Natural height — sticky + scroll-timeline was glitching with the stats overlay */
-  height: auto;
-  min-height: min(100dvh, 920px);
-  overflow: hidden;
+  /* Desktop: tall sticky stage so portrait + stats seam work together.
+     Mobile overrides live only in @media (max-width: 780px / 480px). */
+  height: 118dvh;
+  min-height: 860px;
+  overflow: clip;
 }
 
 .hero-sticky {
-  position: relative;
-  top: auto;
+  position: sticky;
+  top: 68px;
   display: grid;
-  height: auto;
-  min-height: min(calc(100dvh - 68px), 820px);
+  height: calc(100dvh - 68px);
+  min-height: 700px;
   grid-template-columns: minmax(0, 1.05fr) minmax(420px, 0.95fr);
   align-items: center;
   overflow: hidden;
@@ -708,10 +709,11 @@ main {
   position: relative;
   z-index: 8;
   isolation: isolate;
-  /* Real flow height + pull-up — avoids sticky/transform fight with hero */
-  height: auto;
-  scroll-margin-top: 120px;
-  margin: calc(-1 * clamp(200px, 22vw, 280px)) 0 0;
+  /* Desktop: zero-height wrapper; panel sits on the hero seam via translateY.
+     Mobile uses real height + margin pull-up inside @media only. */
+  height: 0;
+  scroll-margin-top: 320px;
+  margin: 0;
   padding: 0 var(--gutter);
   color: var(--ink);
   pointer-events: none;
@@ -734,15 +736,12 @@ main {
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     inset 0 0 0 1px var(--line),
     var(--shadow-panel);
-  backdrop-filter: blur(18px) saturate(120%);
-  -webkit-backdrop-filter: blur(18px) saturate(120%);
+  backdrop-filter: blur(26px) saturate(132%);
+  -webkit-backdrop-filter: blur(26px) saturate(132%);
   gap: clamp(56px, 6vw, 96px);
   grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
   pointer-events: auto;
-  /* Static position — no scroll-linked transform jitter */
-  transform: none;
-  will-change: auto;
-  backface-visibility: hidden;
+  transform: translateY(calc(-50% + var(--stats-seam-offset)));
 }
 
 .profile-stats-heading {
