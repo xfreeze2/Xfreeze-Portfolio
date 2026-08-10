@@ -53,7 +53,6 @@ if ("scrollRestoration" in history) {
   const pathToSection = {
     "/": "top",
     "/about": "about",
-    "/frezestack": "frezestack",
     "/articles": "articles",
     "/posts": "posts",
     "/library": "posts",
@@ -179,7 +178,7 @@ if ("scrollRestoration" in history) {
   }
 
   function bootFromLocation() {
-    // Old bookmarks: /#frezestack → /frezestack (URL only)
+    // Old hash bookmarks: /#about → /about (URL only)
     if (location.hash && location.hash.length > 1) {
       const id = location.hash.slice(1);
       if (id === "top" || document.getElementById(id)) {

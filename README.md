@@ -1,3 +1,11 @@
+# X Freeze Portfolio (no Freezestack)
+
+Variant of the X Freeze personal portfolio with **Freezestack removed** (product is work-in-progress; will be added back later).
+
+Source of the full site (with Freezestack): `~/Xfreeze-Portfolio`.
+
+---
+
 # Xfreeze Portfolio
 
 Personal portfolio for [@XFreeze](https://x.com/XFreeze) — engineer, writer, and researcher.
@@ -6,7 +14,6 @@ Personal portfolio for [@XFreeze](https://x.com/XFreeze) — engineer, writer, a
 
 - Hero + profile stats
 - About
-- Freezestack (templates, skills, prompts)
 - Articles (X long-form with scroll-linked horizontal track)
 - Post library
 - Contact (Calendly consult + email)
@@ -15,7 +22,7 @@ Personal portfolio for [@XFreeze](https://x.com/XFreeze) — engineer, writer, a
 ## Local
 
 ```bash
-cd Xfreeze-Portfolio
+cd ~/Xfreeze-Portfolio-NoStack
 python3 -m http.server 5299
 ```
 
