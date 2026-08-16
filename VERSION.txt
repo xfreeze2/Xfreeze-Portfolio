@@ -1,8 +1,8 @@
-X Freeze Portfolio — WITHOUT Freezestack (current live main)
+X Freeze Portfolio — live main
 
-Freezestack is WIP and was removed from this deploy.
-Full Freezestack version is saved on git branch: with-freezestack
-Local backup: ~/Xfreeze-Portfolio-WithFreezestack
+Currently without:
+- Freezestack (saved: branch with-freezestack, ~/Xfreeze-Portfolio-WithFreezestack)
+- Library / post archive (saved: ~/Xfreeze-Portfolio-Saved-Sections/library and repo _saved/library)
 
-To push Freezestack version back live, say:
-  "push freezestack version" or "upload freezestack version"
+To restore Library, say: "add library back" or "restore library"
+To restore Freezestack, say: "push freezestack version"

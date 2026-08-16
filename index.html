@@ -36,7 +36,6 @@
     <link rel="preload" as="image" href="assets/xfreeze-hoodie-transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=desktop-restore-1">
-    <script src="posts.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -50,7 +49,6 @@
       <nav aria-label="Primary navigation">
         <a href="/about">About</a>
         <a href="/articles">Articles</a>
-        <a href="/posts">Library</a>
       </nav>
 
       <div class="nav-actions">
@@ -331,44 +329,6 @@
         </div>
       </section>
 
-      <section class="library reveal-section" id="posts" aria-label="Post library">
-        <header class="library-head">
-          <div class="library-head-copy">
-            <p class="library-kicker">Library</p>
-            <h2>Ideas worth more than one post.</h2>
-            <p>Highest-reach writing from the archive - search by topic, sort by reach or recency, and open any post on X.</p>
-            <p class="library-focus">I follow Grok and xAI, SpaceX, and Tesla and Optimus closely.</p>
-          </div>
-          <p class="library-meta">Archive · July 2026</p>
-        </header>
-
-        <div class="library-toolbar">
-          <div class="lib-search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="7"></circle>
-              <path d="M20 20l-3.5-3.5"></path>
-            </svg>
-            <input type="search" id="lib-q" placeholder="Search posts, topics, names..." aria-label="Search posts" autocomplete="off">
-          </div>
-          <div class="lib-sort" role="group" aria-label="Sort posts">
-            <button class="sort-btn active" type="button" data-sort="views" aria-pressed="true">Most viewed</button>
-            <button class="sort-btn" type="button" data-sort="date" aria-pressed="false">Newest</button>
-          </div>
-        </div>
-
-        <div class="lib-filters" id="lib-filters" role="group" aria-label="Filter posts by topic"></div>
-
-        <div class="library-results">
-          <p class="lib-count" id="lib-count" role="status" aria-live="polite"></p>
-          <div class="lib-grid" id="lib-grid"></div>
-          <div class="library-foot">
-            <div class="lib-more">
-              <button class="button button-primary" id="lib-more" type="button">Load more posts</button>
-            </div>
-            <a class="text-link" href="https://x.com/XFreeze" target="_blank" rel="noreferrer">See all on X <span>↗</span></a>
-          </div>
-        </div>
-      </section>
 
       <section class="contact reveal-section" id="contact">
         <h2>Have something in mind?</h2>
