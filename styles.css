@@ -683,6 +683,12 @@ main {
   gap: clamp(20px, 3vw, 40px);
 }
 
+.principle-card-body > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
 .principle-card-body p {
   margin: 0;
 }
@@ -776,7 +782,7 @@ main {
   align-content: stretch;
   margin: 0;
   column-gap: 0;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: minmax(0, 1fr) auto;
   row-gap: clamp(28px, 3vw, 42px);
 }
@@ -802,8 +808,7 @@ main {
   padding-left: 0;
 }
 
-.profile-stat:nth-child(3),
-.profile-stat:nth-child(4) {
+.profile-stat:nth-child(3) {
   border-left: 1px solid rgba(55, 70, 95, 0.14);
 }
 
@@ -2348,7 +2353,7 @@ main {
 
 .site-footer {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 1fr auto;
   align-items: center;
   gap: 40px;
   padding: 44px var(--gutter);
@@ -3317,8 +3322,7 @@ body.calendly-loading-open {
     padding: 26px 0 0;
   }
 
-  .profile-stat:nth-child(3),
-  .profile-stat:nth-child(4) {
+  .profile-stat:nth-child(3) {
     margin-top: 26px;
     border-top: 1px solid rgba(55, 70, 95, 0.14);
     border-left: 0;

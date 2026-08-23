@@ -22,11 +22,11 @@ Personal portfolio for [@XFreeze](https://x.com/XFreeze) — engineer, writer, a
 ## Local
 
 ```bash
-cd ~/Xfreeze-Portfolio-NoStack
-python3 -m http.server 5299
+cd ~/Developer/grok/projects/xfreeze-portfolio
+./start.sh
 ```
 
-Open [http://localhost:5299](http://localhost:5299).
+Opens Chrome at [http://127.0.0.1:5299](http://127.0.0.1:5299). Live site: [xfreeze.com](https://xfreeze.com).
 
 ## Contact
 
