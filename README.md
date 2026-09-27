@@ -16,7 +16,7 @@ Personal portfolio for [@XFreeze](https://x.com/XFreeze) — engineer, writer, a
 - About
 - Articles (X long-form with scroll-linked horizontal track)
 - Post library
-- Contact (Calendly consult + email)
+- Contact (Whop consult + email)
 - Support (Buy me a coffee / crypto)
 
 ## Local
@@ -30,6 +30,6 @@ Opens Chrome at [http://127.0.0.1:5299](http://127.0.0.1:5299). Live site: [xfre
 
 ## Contact
 
-- Consult: [Calendly](https://calendly.com/xfreeze-connect/30min)
+- Consult: [Whop](https://whop.com/xfreeze-b978/expert-growth-advisory-sessions)
 - Email: xfreeze.connect@gmail.com
 - X: [@XFreeze](https://x.com/XFreeze)
