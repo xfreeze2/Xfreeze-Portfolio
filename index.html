@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preload" as="image" href="assets/xfreeze-hoodie-transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=cal-popup-1">
+    <link rel="stylesheet" href="styles.css?v=cal-tight-1">
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -354,19 +354,10 @@
       </div>
     </footer>
 
-    <dialog class="dialog book-dialog" id="bookDialog" aria-labelledby="bookTitle">
-      <div class="dialog-shell book-shell">
-        <div class="book-dialog-bar">
-          <h2 id="bookTitle">Talk with me</h2>
-          <button class="close-button" type="button" data-close-dialog aria-label="Close booking">×</button>
-        </div>
-        <div class="book-frame-wrap">
-          <div class="book-loading" id="bookLoading" role="status">
-            <div class="book-loading-spinner" aria-hidden="true"></div>
-            <p>Opening calendar…</p>
-          </div>
-          <iframe id="bookFrame" title="Book a 30 minute call" data-src="https://cal.com/xfreeze-hkx1v9/30min?embed=true" allow="payment *; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
-        </div>
+    <dialog class="dialog book-dialog" id="bookDialog" aria-label="Book a 30 minute call">
+      <div class="book-shell">
+        <button class="book-close" type="button" data-close-dialog aria-label="Close booking">×</button>
+        <iframe id="bookFrame" title="Book a 30 minute call" data-src="https://cal.com/xfreeze-hkx1v9/30min?embed=true" allow="payment *; clipboard-write" referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
     </dialog>
 

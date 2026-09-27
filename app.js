@@ -212,7 +212,6 @@ const consultDialog = document.querySelector("#consultDialog");
 const supportDialog = document.querySelector("#supportDialog");
 const bookDialog = document.querySelector("#bookDialog");
 const bookFrame = document.querySelector("#bookFrame");
-const bookLoading = document.querySelector("#bookLoading");
 const consultForm = document.querySelector("#consultForm");
 const consultStatus = document.querySelector("#consultStatus");
 const walletStatus = document.querySelector("#walletStatus");
@@ -295,27 +294,13 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
 }
 
-let bookReady = false;
-
-function ensureBookFrame() {
-  if (!bookFrame || bookFrame.getAttribute("src")) return;
-  bookFrame.addEventListener("load", () => {
-    bookReady = true;
-    if (bookLoading) bookLoading.hidden = true;
-  }, { once: true });
-  bookFrame.src = bookFrame.dataset.src;
-}
-
 function openBookPopup() {
-  if (!bookDialog) return;
-  ensureBookFrame();
-  if (bookReady && bookLoading) bookLoading.hidden = true;
+  if (!bookDialog || !bookFrame) return;
+  if (!bookFrame.getAttribute("src")) bookFrame.src = bookFrame.dataset.src;
   openDialog(bookDialog);
 }
 
 document.querySelectorAll("[data-open-booking]").forEach((button) => {
-  button.addEventListener("pointerenter", ensureBookFrame, { once: true });
-  button.addEventListener("focus", ensureBookFrame, { once: true });
   button.addEventListener("click", (event) => {
     event.preventDefault();
     openBookPopup();
