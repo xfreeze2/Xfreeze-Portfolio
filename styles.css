@@ -2412,7 +2412,7 @@ main {
   box-shadow: var(--shadow-panel);
 }
 
-.whop-dialog:modal {
+.book-dialog:modal {
   position: fixed;
   top: 28px;
   right: auto;
@@ -2428,7 +2428,7 @@ main {
   transform: translateX(-50%);
 }
 
-.whop-shell {
+.book-shell {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -2439,7 +2439,7 @@ main {
   overflow: hidden;
 }
 
-.whop-dialog .close-button {
+.book-dialog .close-button {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -2447,7 +2447,7 @@ main {
   background: var(--card-bg);
 }
 
-.whop-dialog-bar {
+.book-dialog-bar {
   display: flex;
   flex: 0 0 auto;
   align-items: center;
@@ -2458,7 +2458,7 @@ main {
   margin-bottom: 12px;
 }
 
-.whop-dialog-bar h2 {
+.book-dialog-bar h2 {
   margin: 0;
   padding-right: 48px;
   font-size: 1.25rem;
@@ -2466,7 +2466,7 @@ main {
   letter-spacing: -0.04em;
 }
 
-.whop-frame-wrap {
+.book-frame-wrap {
   position: relative;
   flex: 1 1 auto;
   width: 100%;
@@ -2477,7 +2477,7 @@ main {
   background: #fff;
 }
 
-.whop-frame-wrap iframe {
+.book-frame-wrap iframe {
   display: block;
   width: 100%;
   height: 100%;
@@ -2486,7 +2486,7 @@ main {
   background: #fff;
 }
 
-.whop-loading {
+.book-loading {
   position: absolute;
   z-index: 1;
   inset: 0;
@@ -2497,33 +2497,33 @@ main {
   background: var(--card-bg);
 }
 
-.whop-loading[hidden] {
+.book-loading[hidden] {
   display: none;
 }
 
-.whop-loading p {
+.book-loading p {
   margin: 0;
   font-size: 14px;
   font-weight: 600;
 }
 
-.whop-loading-spinner {
+.book-loading-spinner {
   width: 28px;
   height: 28px;
   border: 2.5px solid var(--line-strong);
   border-top-color: var(--ink);
   border-radius: 50%;
-  animation: whop-spin 0.7s linear infinite;
+  animation: book-spin 0.7s linear infinite;
 }
 
-@keyframes whop-spin {
+@keyframes book-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
 @media (max-width: 780px) {
-  .whop-dialog:modal {
+  .book-dialog:modal {
     top: 8px;
     right: 8px;
     bottom: 8px;
@@ -2532,7 +2532,7 @@ main {
     transform: none;
   }
 
-  .whop-shell {
+  .book-shell {
     padding: 12px;
   }
 }
