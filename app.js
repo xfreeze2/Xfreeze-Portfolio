@@ -210,6 +210,9 @@ if ("scrollRestoration" in history) {
 
 const consultDialog = document.querySelector("#consultDialog");
 const supportDialog = document.querySelector("#supportDialog");
+const whopDialog = document.querySelector("#whopDialog");
+const whopFrame = document.querySelector("#whopFrame");
+const whopLoading = document.querySelector("#whopLoading");
 const consultForm = document.querySelector("#consultForm");
 const consultStatus = document.querySelector("#consultStatus");
 const walletStatus = document.querySelector("#walletStatus");
@@ -292,6 +295,33 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
 }
 
+let whopReady = false;
+
+function ensureWhopFrame() {
+  if (!whopFrame || whopFrame.getAttribute("src")) return;
+  whopFrame.addEventListener("load", () => {
+    whopReady = true;
+    if (whopLoading) whopLoading.hidden = true;
+  }, { once: true });
+  whopFrame.src = whopFrame.dataset.src;
+}
+
+function openWhopPopup() {
+  if (!whopDialog) return;
+  ensureWhopFrame();
+  if (whopReady && whopLoading) whopLoading.hidden = true;
+  openDialog(whopDialog);
+}
+
+document.querySelectorAll("[data-open-whop]").forEach((button) => {
+  button.addEventListener("pointerenter", ensureWhopFrame, { once: true });
+  button.addEventListener("focus", ensureWhopFrame, { once: true });
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    openWhopPopup();
+  });
+});
+
 document.querySelectorAll("[data-open-support]").forEach((button) => {
   button.addEventListener("click", () => openDialog(supportDialog));
 });
@@ -300,7 +330,7 @@ document.querySelectorAll("[data-close-dialog]").forEach((button) => {
   button.addEventListener("click", () => closeDialog(button.closest("dialog")));
 });
 
-[consultDialog, supportDialog].filter(Boolean).forEach((dialog) => {
+[consultDialog, supportDialog, whopDialog].filter(Boolean).forEach((dialog) => {
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) closeDialog(dialog);
   });
