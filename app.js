@@ -210,8 +210,6 @@ if ("scrollRestoration" in history) {
 
 const consultDialog = document.querySelector("#consultDialog");
 const supportDialog = document.querySelector("#supportDialog");
-const bookDialog = document.querySelector("#bookDialog");
-const bookFrame = document.querySelector("#bookFrame");
 const consultForm = document.querySelector("#consultForm");
 const consultStatus = document.querySelector("#consultStatus");
 const walletStatus = document.querySelector("#walletStatus");
@@ -294,19 +292,6 @@ function showToast(message) {
   toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
 }
 
-function openBookPopup() {
-  if (!bookDialog || !bookFrame) return;
-  if (!bookFrame.getAttribute("src")) bookFrame.src = bookFrame.dataset.src;
-  openDialog(bookDialog);
-}
-
-document.querySelectorAll("[data-open-booking]").forEach((button) => {
-  button.addEventListener("click", (event) => {
-    event.preventDefault();
-    openBookPopup();
-  });
-});
-
 document.querySelectorAll("[data-open-support]").forEach((button) => {
   button.addEventListener("click", () => openDialog(supportDialog));
 });
@@ -315,7 +300,7 @@ document.querySelectorAll("[data-close-dialog]").forEach((button) => {
   button.addEventListener("click", () => closeDialog(button.closest("dialog")));
 });
 
-[consultDialog, supportDialog, bookDialog].filter(Boolean).forEach((dialog) => {
+[consultDialog, supportDialog].filter(Boolean).forEach((dialog) => {
   dialog.addEventListener("click", (event) => {
     if (event.target === dialog) closeDialog(dialog);
   });
