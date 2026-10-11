@@ -243,3 +243,16 @@ html[data-theme="dark"] .gk-ask__what { background-image: linear-gradient(90deg,
 .gk-modal__close { background: var(--canvas-soft); }
 .gk-ghostbtn { font-size: 13px; }
 .gk-note { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; }
+
+/* At most four badges a row, with room to breathe; three, two and one on smaller screens. */
+.gk-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.gk-badge__band { height: 96px; }
+.gk-badge__photo { left: 22px; bottom: -32px; }
+.gk-badge__body { padding: 46px 24px 0; }
+.gk-badge h3 { margin-top: 6px; font-size: 21px; }
+.gk-badge__role { margin-top: 3px; font-size: 14px; }
+.gk-badge__about { margin-top: 14px; font-size: 14.5px; line-height: 1.6; }
+.gk-badge__foot { margin-top: 22px; padding: 16px 22px 18px 24px; }
+@media (max-width: 1240px) { .gk-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
+@media (max-width: 900px) { .gk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } }
+@media (max-width: 600px) { .gk-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
