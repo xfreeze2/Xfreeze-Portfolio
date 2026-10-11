@@ -254,6 +254,23 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
   );
 
   revealSections.forEach((section) => revealObserver.observe(section));
+
+  // Phones: the stats card sits just below the hero, so keep it hidden until the
+  // visitor scrolls it well into view, then slide it up.
+  const stats = document.querySelector(".profile-stats");
+  if (stats && window.matchMedia("(max-width: 780px)").matches) {
+    const statsObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { rootMargin: "0px 0px -22% 0px", threshold: 0 }
+    );
+    statsObserver.observe(stats);
+  }
 }
 
 if (window.matchMedia("(pointer: fine)").matches) {

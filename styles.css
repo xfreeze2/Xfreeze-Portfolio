@@ -3654,3 +3654,17 @@ body.calendly-loading-open {
     display: none;
   }
 }
+
+/* ── Phones: the stats card stays hidden until scrolled into view ── */
+@media (max-width: 780px) {
+  .has-reveal .profile-stats > .profile-stats-panel {
+    opacity: 0;
+    transform: translate3d(0, 56px, 0);
+    transition: opacity 900ms cubic-bezier(0.16, 1, 0.3, 1), transform 1100ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .has-reveal .profile-stats.is-visible > .profile-stats-panel {
+    opacity: 1;
+    transform: none;
+  }
+}
