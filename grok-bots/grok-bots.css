@@ -228,7 +228,7 @@ html[data-theme="dark"] .gk-ask__what { background-image: linear-gradient(90deg,
 .gk-match__lbl, .gk-badge__id, .gk-cv__meta dt, .gk-cv__main h3 { font-family: var(--mono); font-weight: 500; }
 .gk-match h2, .gk-badge h3, .gk-cv__side h2, .gk-list__head h2 { font-weight: 600; letter-spacing: -0.045em; }
 .gk-list { padding: 8px var(--gutter) clamp(72px, 8vw, 120px); }
-.gk-list__head h2 { font-size: clamp(2rem, 3vw, 3rem); letter-spacing: -0.065em; }
+.gk-list__head h2 { font-size: clamp(1.5rem, 2vw, 2rem); letter-spacing: -0.045em; }
 .gk-depts { border-bottom-color: var(--line); }
 .gk-dept { font-size: 13px; font-weight: 500; color: var(--muted); }
 .gk-dept[aria-pressed="true"] { border-bottom-color: var(--ink); }
