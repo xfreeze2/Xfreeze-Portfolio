@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Ready-made Grok bots by X Freeze for work, money, health, learning and more. They know the work: hire them in one click, give them a task, and they handle the rest.">
+    <meta name="theme-color" content="#edf1f4">
+    <meta property="og:title" content="Grok Bots by X Freeze">
+    <meta property="og:description" content="Every job has an expert. Hire yours.">
+    <meta property="og:image" content="assets/xfreeze-space-backdrop.png">
+    <title>Grok Bots | X Freeze</title>
+    <link rel="canonical" href="https://xfreeze.com/grok-bots">
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("xf-theme");
+          var theme = stored === "dark" || stored === "light"
+            ? stored
+            : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=calendly-restore-1">
+    <link rel="stylesheet" href="/grok-bots/grok-bots.css?v=3">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="X Freeze home">
+        <span>X FREEZE</span>
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <a href="/about">About</a>
+        <a href="/articles">Articles</a>
+        <a href="/grok-bots" aria-current="page">Grok Bots</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle dark theme" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3a7 7 0 0 0 11.5 11.5z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path>
+          </svg>
+        </button>
+        <a class="nav-contact" href="/contact">Contact</a>
+        <a class="nav-support" href="/support">Buy me a coffee</a>
+      </div>
+    </header>
+
+    <main class="gk" id="main">
+      <section class="gk-hero" aria-labelledby="gk-title">
+        <div class="gk-ghosts" id="gk-ghosts" aria-hidden="true"></div>
+        <div class="gk-hero__inner content-container">
+          <p class="gk-kicker">Grok bots by X Freeze</p>
+          <h1 id="gk-title">Every job has an expert. Hire yours.</h1>
+          <p class="gk-sub">Ready-made Grok bots that know the work. Give them a task and they handle the rest.</p>
+          <form class="gk-ask" id="gk-ask" role="search" autocomplete="off">
+            <label class="gk-ask__line" for="gk-search"><span class="gk-ask__need">I need help with</span> <span class="gk-ask__what" id="gk-what"></span><span class="gk-caret" aria-hidden="true"></span></label>
+            <div class="gk-ask__box">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input id="gk-search" type="search" placeholder="Try &quot;file my taxes&quot;" aria-label="What do you need help with?" spellcheck="false">
+              <button class="gk-ask__go" type="submit">Find my expert</button>
+            </div>
+          </form>
+          <div class="gk-match" id="gk-match" aria-live="polite"></div>
+          <p class="gk-also" id="gk-also"></p>
+        </div>
+      </section>
+
+      <section class="gk-list content-container" id="gk-staff" aria-labelledby="gk-list-title">
+        <nav class="gk-depts" id="gk-cats" aria-label="Departments"></nav>
+        <div class="gk-list__head">
+          <h2 id="gk-list-title">Meet the staff</h2>
+          <p id="gk-count" aria-live="polite"></p>
+        </div>
+        <ul class="gk-grid" id="gk-grid"></ul>
+        <p class="gk-empty" id="gk-empty" hidden>No bots match that yet. Try other words, or pick a department.</p>
+        <p class="gk-note">X Freeze is independent and not affiliated with xAI. Grok and Grok Bot are trademarks of xAI.</p>
+      </section>
+    </main>
+
+    <dialog class="gk-modal" id="gk-modal" aria-labelledby="gk-m-name">
+      <div id="gk-modal-body"></div>
+    </dialog>
+
+    <footer class="site-footer">
+      <a class="brand" href="/"><span>X FREEZE</span></a>
+      <div>
+        <a href="https://x.com/XFreeze" target="_blank" rel="noreferrer">X ↗</a>
+        <a href="/support">Support</a>
+        <a href="#top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script src="/grok-bots/grok-bots-faces.js?v=1"></script>
+    <script src="/grok-bots/grok-bots-icons.js?v=1"></script>
+    <script src="/grok-bots/grok-bots-scenes.js?v=1"></script>
+    <script src="/grok-bots/grok-bots-data.js?v=1"></script>
+    <script src="/grok-bots/grok-bots.js?v=1"></script>
+  </body>
+</html>
