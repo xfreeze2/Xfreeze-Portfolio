@@ -163,6 +163,7 @@
   function showMatch(query) {
     var box = document.getElementById('gk-match'), also = document.getElementById('gk-also'), hero = document.querySelector('.gk-hero__inner');
     if (!box) return;
+    var fading = box.classList.contains('is-out');
     forget(box);
     var found = rank(query);
     if (!found.length) {
@@ -170,6 +171,7 @@
       box.removeAttribute('data-hue');
       box.replaceChildren(h('p', { text: 'No exact match yet. Try other words, or browse the departments below.' }));
       if (also) also.replaceChildren();
+      if (fading) fadeIn(box, also);
       return;
     }
     var b = found[0].b;
@@ -190,6 +192,16 @@
       });
       also.replaceChildren.apply(also, parts.length ? ['Also good for this: '].concat(parts) : []);
     }
+    if (fading) fadeIn(box, also);
+  }
+  // While the next example types, the suggestion fades out; it fades back in with the new bot.
+  function fadeOut() {
+    ['gk-match', 'gk-also'].forEach(function (id) { var el = document.getElementById(id); if (el && el.childNodes.length) el.classList.add('is-out'); });
+  }
+  function fadeIn(box, also) {
+    box.className += ' is-out';
+    if (also) also.classList.add('is-out');
+    setTimeout(function () { box.classList.remove('is-out'); if (also) also.classList.remove('is-out'); }, 40);
   }
   // Types an example into the blank, shows its expert, then moves on, until the visitor types.
   function typeExample() {
@@ -200,6 +212,7 @@
     clearInterval(desk.typing);
     if (reduceMotion) { what.textContent = text; showMatch(text); return; }
     what.textContent = '';
+    fadeOut();
     desk.typing = setInterval(function () {
       what.textContent = text.slice(0, ++i);
       if (i >= text.length) { clearInterval(desk.typing); showMatch(text); }
@@ -210,7 +223,11 @@
     typeExample();
     if (!reduceMotion) desk.cycle = setInterval(typeExample, 3800);
   }
-  function stopExamples() { clearInterval(desk.cycle); clearInterval(desk.typing); }
+  function stopExamples() {
+    clearInterval(desk.cycle);
+    clearInterval(desk.typing);
+    ['gk-match', 'gk-also'].forEach(function (id) { var el = document.getElementById(id); if (el) el.classList.remove('is-out'); });
+  }
 
   /* ---------- departments ---------- */
   function renderCats() {

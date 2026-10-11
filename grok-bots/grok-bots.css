@@ -256,3 +256,10 @@ html[data-theme="dark"] .gk-ask__what { background-image: linear-gradient(90deg,
 @media (max-width: 1240px) { .gk-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; } }
 @media (max-width: 900px) { .gk-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; } }
 @media (max-width: 600px) { .gk-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; } }
+
+/* The suggestion fades between examples instead of popping. */
+.gk-match { transition: opacity 600ms ease, transform 600ms cubic-bezier(.23, 1, .32, 1), border-color 600ms ease, background-color 600ms ease; }
+.gk-also { transition: opacity 600ms ease; }
+.gk-match.is-out { opacity: 0; transform: translateY(8px); }
+.gk-also.is-out { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .gk-match, .gk-also { transition: none; } }
