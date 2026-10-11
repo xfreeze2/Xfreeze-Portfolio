@@ -3445,3 +3445,115 @@ body.calendly-loading-open {
     animation: none !important;
   }
 }
+
+/* ── Mobile menu: the header hides its page links under 1100px, so a button opens them ── */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--card-bg-soft);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.menu-toggle:hover {
+  border-color: var(--line-strong);
+}
+
+.menu-toggle span,
+.menu-toggle span::before {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 220ms var(--ease-out);
+}
+
+.menu-toggle span {
+  position: relative;
+  transform: translateY(-3px);
+}
+
+.menu-toggle span::before {
+  position: absolute;
+  top: 6px;
+  content: "";
+}
+
+.menu-toggle[aria-expanded="true"] span {
+  transform: translateY(0) rotate(45deg);
+}
+
+.menu-toggle[aria-expanded="true"] span::before {
+  transform: translateY(-6px) rotate(-90deg);
+}
+
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: grid;
+  padding: 8px var(--gutter) 22px;
+  border-bottom: 1px solid var(--line);
+  background: var(--canvas);
+  box-shadow: var(--shadow-panel);
+  animation: menu-in 260ms var(--ease-out);
+}
+
+.mobile-menu[hidden] {
+  display: none;
+}
+
+.mobile-menu a {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.045em;
+}
+
+.mobile-menu a:last-child {
+  border-bottom: 0;
+}
+
+.mobile-menu a[aria-current="page"] {
+  color: var(--slate);
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 1100px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1101px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .nav-actions {
+    gap: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { animation: none; }
+  .menu-toggle span, .menu-toggle span::before { transition: none; }
+}

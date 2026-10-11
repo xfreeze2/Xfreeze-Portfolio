@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=calendly-restore-1">
+    <link rel="stylesheet" href="/styles.css?v=mobile-menu-2">
     <link rel="stylesheet" href="/grok-bots/grok-bots.css?v=6">
   </head>
   <body>
@@ -58,6 +58,15 @@
         </button>
         <a class="nav-contact" href="/contact">Contact</a>
         <a class="nav-support" href="/support">Buy me a coffee</a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menu" hidden>
+        <a href="/about">About</a>
+        <a href="/articles">Articles</a>
+        <a href="/grok-bots" aria-current="page">Grok Bots</a>
+        <a href="/contact">Contact</a>
       </div>
     </header>
 
@@ -111,5 +120,6 @@
     <script src="/grok-bots/grok-bots-scenes.js?v=1"></script>
     <script src="/grok-bots/grok-bots-data.js?v=1"></script>
     <script src="/grok-bots/grok-bots.js?v=2"></script>
+    <script src="/nav-menu.js" defer></script>
   </body>
 </html>

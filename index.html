@@ -35,8 +35,9 @@
     <link rel="dns-prefetch" href="https://calendly.com">
     <link rel="preload" as="image" href="assets/xfreeze-hoodie-transparent.png">
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=calendly-restore-1">
+    <link rel="stylesheet" href="styles.css?v=mobile-menu-2">
     <script src="app.js" defer></script>
+    <script src="nav-menu.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -64,6 +65,15 @@
         </button>
         <a class="nav-contact" href="/contact">Contact</a>
         <button class="nav-support" type="button" data-open-support>Buy me a coffee</button>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+          <span aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menu" hidden>
+        <a href="/about">About</a>
+        <a href="/articles">Articles</a>
+        <a href="/grok-bots">Grok Bots</a>
+        <a href="/contact">Contact</a>
       </div>
     </header>
 
