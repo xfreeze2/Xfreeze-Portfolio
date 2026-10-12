@@ -3641,12 +3641,26 @@ body.calendly-loading-open {
   transition: opacity 1100ms cubic-bezier(0.16, 1, 0.3, 1), transform 1300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms ease;
 }
 
+/* The hero text column is narrow on phones (240px under 480px), so the note sizes to its
+   own text instead, up to the screen width. */
+@media (max-width: 780px) {
+  .hero-pill {
+    width: max-content;
+    max-width: calc(100vw - 2 * var(--gutter));
+  }
+}
+
 @media (max-width: 480px) {
   .hero-pill {
     white-space: nowrap;
-    gap: 8px;
-    padding-right: 12px;
+    gap: 7px;
+    padding: 5px 12px 5px 6px;
     font-size: 12px;
+  }
+
+  .hero-pill__icon {
+    width: 24px;
+    height: 24px;
   }
 
   .hero-pill__arrow,
