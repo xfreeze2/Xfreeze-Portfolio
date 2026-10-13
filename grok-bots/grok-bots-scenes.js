@@ -653,5 +653,24 @@
       }).join('');
   };
 
+  // Explainer Video: a video frame where a chart grows and draws its trend, a verified tick
+  // pops in, and a voice-over waveform runs underneath.
+  S['explainer-video-bot'] = function () {
+    var d = 3.8, t = [0, 0.3, 0.8, 1];
+    function bar(x, h, delay) {
+      var low = 2;
+      return '<rect x="' + x + '" y="' + (29 - low) + '" width="4" height="' + low + '" rx="1">' +
+        A('height', [low, h, h, low], d, { t: t, begin: delay }) + A('y', [29 - low, 29 - h, 29 - h, 29 - low], d, { t: t, begin: delay }) + '</rect>';
+    }
+    return '<rect x="7" y="9" width="34" height="25" rx="4"/>' +
+      bar(12, 7, 0) + bar(18, 11, 0.15) + bar(24, 14, 0.3) +
+      draw('M12 20l8-4 6 1 8-6', [100, 100, 0, 0, 100], d, { cls: 'ac', t: [0, 0.3, 0.5, 0.88, 1] }) +
+      pop(35.5, 14.5, [0, 0, 1.1, 1, 1, 0], d, [0, 0.5, 0.58, 0.64, 0.88, 1], badge(3.4)) +
+      [[11, 0, 2], [15.5, 0.12, 3.5], [20, 0.24, 2.5], [24.5, 0.06, 4], [29, 0.18, 2], [33.5, 0.3, 3]].map(function (b) {
+        return '<line class="dim" x1="' + b[0] + '" x2="' + b[0] + '" y1="39" y2="41">' +
+          A('y1', [39, 40 - b[2], 39], 0.7, { begin: b[1] }) + A('y2', [41, 40 + b[2], 41], 0.7, { begin: b[1] }) + '</line>';
+      }).join('');
+  };
+
   window.FreezeStackGrokScenes = S;
 })();

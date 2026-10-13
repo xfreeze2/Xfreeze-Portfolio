@@ -1556,6 +1556,30 @@ window.FreezeStackGrokBots = {
    "face": 0,
    "color": "#FF6700",
    "featured": true
+  },
+  {
+   "id": "explainer-video-bot",
+   "name": "Explainer Video Bot",
+   "category": "create",
+   "role": "Explainer video maker",
+   "about": "Makes upload-ready explainer videos backed by verified numbers, with AI voice-over, kinetic motion graphics and real footage.",
+   "can": [
+    "Researches the topic and checks every number",
+    "Writes the script and records an AI voice-over",
+    "Animates charts, maps and kinetic text",
+    "Mixes in real footage and delivers an upload-ready file"
+   ],
+   "how": "Made for creators who want a fresh, engaging explainer every time. It starts from the facts, turns the data into clear moving graphics, and keeps each video different so your channel never feels repetitive.",
+   "wont": [
+    "Show numbers it couldn't verify",
+    "Upload or post the video for you"
+   ],
+   "tools": [],
+   "link": "https://x.ai/bot/eTLAqnD45kW3h-THwU8XM",
+   "icon": "video",
+   "face": 7,
+   "color": "#855C36",
+   "featured": true
   }
  ]
 };
