@@ -6,7 +6,7 @@
  * colour also picks the gradient of the bot's tile.
  */
 window.FreezeStackGrokBots = {
- "updated": "2026-10-11",
+ "updated": "2026-10-13",
  "categories": [
   {
    "id": "create",
@@ -1532,6 +1532,30 @@ window.FreezeStackGrokBots = {
    "icon": "headset",
    "face": 7,
    "color": "#855C36"
+  },
+  {
+   "id": "motion-graphic-video-bot",
+   "name": "Motion Graphic Video Bot",
+   "category": "create",
+   "role": "Launch & promo video maker",
+   "about": "Makes premium, cinematic 60-second launch and promo videos for your website or app, with real product screens in 3D, kinetic type and beat-cut sound.",
+   "can": [
+    "Shows your real product screens floating in 3D",
+    "Animates bold headlines with cuts on the beat",
+    "Adds a voice-over, music and layered sound effects",
+    "Exports for X and social in 16:9 and 1:1"
+   ],
+   "how": "Built for founders and creators launching on X. It plans the film around your product's best moments, cuts every scene to the music, and gives each click, keystroke and transition its own sound.",
+   "wont": [
+    "Post the video for you",
+    "Use music or sounds you don't have rights to"
+   ],
+   "tools": [],
+   "link": "https://x.ai/bot/zrtI8xhACQc131JTRCTgl",
+   "icon": "video",
+   "face": 0,
+   "color": "#FF6700",
+   "featured": true
   }
  ]
 };

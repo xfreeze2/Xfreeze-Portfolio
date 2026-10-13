@@ -636,5 +636,22 @@
       draw('M18 22l4 4 8-8.5', [100, 100, 0, 0, 100], d, { cls: 'ac', t: [0, 0.56, 0.68, 0.92, 1] });
   };
 
+  // Motion Graphic Video: a tilted app window with light sweeping across it, a headline that
+  // writes itself in below, and a sound level keeping the beat.
+  S['motion-graphic-video-bot'] = function (u) {
+    var win = 'M9 14 36 10V29L9 34Z', d = 3.2;
+    return '<clipPath id="' + u + '"><path d="' + win + '"/></clipPath>' +
+      '<g>' + T('translate', ['0 0', '0 -1.2', '0 0'], 3) +
+      '<g clip-path="url(#' + u + ')"><g transform="translate(-30 0)">' + T('translate', ['-30 0', '34 0', '34 0'], d, { t: [0, 0.55, 1] }) +
+      '<path class="acf" d="M15 4h7L10 42H3z" opacity=".38"/></g></g>' +
+      '<path d="' + win + '"/><path class="dim" d="M13 18.5l10-1.5M13 23l18-2.7M13 27.5l13-2"/></g>' +
+      draw('M9 39.5h16', [100, 100, 0, 0, 100], d, { cls: 'ac', t: [0, 0.2, 0.42, 0.9, 1] }) +
+      draw('M9 43.5h10', [100, 100, 0, 0, 100], d, { t: [0, 0.32, 0.5, 0.9, 1] }) +
+      [[32, 0, 4], [35.5, 0.15, 6], [39, 0.3, 3.5]].map(function (b) {
+        return '<line class="ac" x1="' + b[0] + '" x2="' + b[0] + '" y1="39.5" y2="43.5">' +
+          A('y1', [39.5, 41.5 - b[2], 39.5], 0.6, { begin: b[1] }) + A('y2', [43.5, 41.5 + b[2], 43.5], 0.6, { begin: b[1] }) + '</line>';
+      }).join('');
+  };
+
   window.FreezeStackGrokScenes = S;
 })();
