@@ -6,7 +6,7 @@
  * colour also picks the gradient of the bot's tile.
  */
 window.FreezeStackGrokBots = {
- "updated": "2026-10-13",
+ "updated": "2026-10-24",
  "categories": [
   {
    "id": "create",
@@ -1579,6 +1579,29 @@ window.FreezeStackGrokBots = {
    "icon": "video",
    "face": 7,
    "color": "#855C36",
+   "featured": true
+  },
+  {
+   "id": "notepad-bot",
+   "name": "Notepad Bot",
+   "category": "life",
+   "role": "Personal notepad & reminders",
+   "about": "A simple personal notepad. Ramble or dictate your ideas and reminders, and it saves clean, dated notes to a Google Doc.",
+   "can": [
+    "Turns rambles and dictated thoughts into clean notes",
+    "Saves each note with its date in your Google Doc",
+    "Sends reminder pings when something is due",
+    "Gives you a morning digest of your notes and reminders"
+   ],
+   "how": "Use it like a notebook in your pocket. Say what's on your mind in any order; it tidies the words, dates the note, keeps everything in one Google Doc, and nudges you when a reminder comes up.",
+   "wont": [],
+   "tools": [
+    "Google Docs"
+   ],
+   "link": "https://x.ai/bot/go9M2-A3GQM5-tpstIPIQ",
+   "icon": "notepad-text",
+   "face": 3,
+   "color": "#009957",
    "featured": true
   }
  ]

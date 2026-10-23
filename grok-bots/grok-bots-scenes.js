@@ -672,5 +672,18 @@
       }).join('');
   };
 
+  // Notepad: a dated page fills line by line as you dictate, then a reminder bell rings.
+  S['notepad-bot'] = function () {
+    var d = 4.4;
+    function line(path, from, to) { return draw(path, [100, 100, 0, 0, 100], d, { t: [0, from, to, 0.9, 1] }); }
+    return '<rect class="paper" x="10" y="9" width="24" height="30" rx="3"/>' +
+      '<path d="M15 6.5v5M22 6.5v5M29 6.5v5"/>' +
+      '<path class="ac" d="M15 16.5h6"/>' +
+      line('M15 22h14', 0.08, 0.28) + line('M15 27h10', 0.28, 0.44) + line('M15 32h12', 0.44, 0.6) +
+      '<g transform="translate(37 33)"><g>' + T('rotate', [0, 0, -16, 13, -8, 0, 0], d, { t: [0, 0.64, 0.7, 0.76, 0.82, 0.88, 1] }) +
+      '<path class="acf" d="M-4.5 2.5c1-1 1.5-2 1.5-4.5a3 3 0 0 1 6 0c0 2.5.5 3.5 1.5 4.5z"/>' +
+      '<path class="ac" d="M-1.3 4.6a1.5 1.5 0 0 0 2.6 0"/></g></g>';
+  };
+
   window.FreezeStackGrokScenes = S;
 })();
